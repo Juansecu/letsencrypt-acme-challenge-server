@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  http-server:
+    image: letsencrypt-acme-challenge-server
+    container_name: letsencrypt-acme-challenge-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      LETSENCRYPT_CHALLENGE: ${LETSENCRYPT_CHALLENGE}
+    ports:
+      - '80:80'
