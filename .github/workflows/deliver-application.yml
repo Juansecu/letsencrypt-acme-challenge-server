@@ -49,11 +49,6 @@ jobs:
     strategy:
       matrix:
         docker-repository: [ juansecu/letsencrypt-acme-challenge-server ]
-        platforms:
-          - linux/amd64
-          - linux/arm/v6
-          - linux/arm/v7
-          - linux/arm64/v8
     permissions:
       contents: read
     steps:
@@ -68,6 +63,5 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: ${{ matrix.platforms }}
           push: true
           tags: ${{ matrix.docker-repository }}:${{ github.ref_name }},${{ matrix.docker-repository }}:latest
